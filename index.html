@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<!-- Meta Compatibility -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Meta SEO -->
+	<meta name="robots" content="index, follow">
+	<meta name="application-name" content="Trashbot">
+	<meta name="subject" content="Utilities">
+	<meta name="description" content="">
+	<meta name="classification" content="">
+	<meta name="keywords" content="">
+	<meta name="language" content="English">
+	<meta name="distribution" content="Global">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://trashbot.ie/">
+	<meta property="og:title" content="Trashbot">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="img/favicons/preview.jpg">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://trashbot.ie/">
+	<meta property="twitter:title" content="Trashbot">
+	<meta property="twitter:description" content="">
+	<meta property="twitter:image" content="img/favicons/preview.jpg">
+
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
+	<link rel="apple-touch-icon-precomposed" sizes="250x250" href="img/favicons/icon-big.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="img/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+	<link rel="shortcut icon" type="image/png" href="img/favicons/icon-big.png">
+	<link rel="icon" type="image/png" href="img/favicons/icon-big.png">
+
+	<!-- Apple Settings -->
+	<meta name='mobile-web-app-capable' content='yes'>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=yes, date=yes, address=yes, email=yes, url=yes">
+
+	<!-- PWA Manifest -->
+	<meta name="theme-color" content="#ffffff" />
+	<link rel="manifest" href="./manifest.webmanifest">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/bootstrap-slider.min.css" />
+	<link rel="stylesheet" href="css/font.css" />
+
+	<!-- JS -->
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/bootstrap-slider.min.js"></script>
+	<script src="./js/roslib.min.js"></script>
+	<script src="./js/nipplejs.js"></script>
+
+	<script src="./js/leo.js"></script>
+	<script src="./js/fullscreen.js"></script>
+	<script src="./js/servoblock.js"></script>
+
+	<title>The TrashBot</title>
+
+</head>
+
+<body class="bg-custom">
+	<nav class="navbar navbar-expand-md color-1">
+		<div class="container-fluid">
+			<div class="col-2 navbar-brand" href="#">
+				<a href="/" class="text-white lead">TrashBot</a>
+			</div>
+			<div class="col-3">
+				<div id="batteryID" class="center-fit"
+					style="width: 70px; height: 40px; color: aliceblue; text-align: center;">Voltage: 0V</div>
+			</div>
+			<div class="col-2 text-center">
+				<button class="bg-dark btn-sm mx-auto" style="width: 45px; height: 45px;" type="button"
+					onclick="fullScreen()">
+					<img class="rounded img-fluid" src="img/nav-bar-fullscreen.svg" alt="FullScreen"
+						style="width: 25px; height: 25px;" />
+				</button>
+			</div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="col-5 collapse navbar-collapse ml-auto" id="collapsibleNavbar">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item ml-auto">
+						<button type="button" class="btn btn-warning btn-sm custom-btn mt-2 ml-3"
+							onclick="systemReboot()">Reboot</button>
+					</li>
+					<!-- <li class="nav-item ml-auto">
+					<button type="button" class="btn btn-warning btn-sm custom-btn mt-2 ml-3" onclick="streamReboot()">Reboot stream</button>
+				</li> -->
+					<li class="nav-item ml-auto">
+						<button type="button" class="btn btn-danger btn-sm custom-btn mt-2 ml-3"
+							onclick="turnOff()">Turn off</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="row md-6 fixed-bottom">
+		<div class="col my-2 d-none d-md-block">
+			<div id="servoB" class="col-4 p-4 rounded bg-servo">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="text-white">Switch Camera</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-2">
+						<button class="btn btn-lg color-2 text-dark">Camera 1</button>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-2">
+						<button class="btn btn-lg color-2 text-dark">Camera 2</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row my-2 align-self-end mr-auto d-none d-md-block">
+			<button id="camBtn" class=" btn-dark custom-btn btn-sm mx-auto rounded" type="button"
+				onclick="camHide()">Hide Camera</button>
+		</div>
+		<div class="col my-2 d-flex" style="height: 210px;">
+			<div id="joystick"></div>
+		</div>
+	</div>
+
+	<div class="justify-content-center" style="margin-top: -70px; min-width: 100%; min-height: 100%; ">
+		<img src="" class="p-1 center-fit" alt="" id="video" style="background-size: cover"></img>
+		<div>
+
+</body>
+
+</html>
